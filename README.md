@@ -1,2 +1,21 @@
-# skills
-Agent Skills for working with Inkeep to build AI agents.
+# Inkeep Skills
+
+Generated skills from the [Inkeep Agent Framework](https://github.com/inkeep/agents) documentation.
+
+## About
+
+These skills are curated sets of documentation rules designed for use with AI agents, LLMs, or any system that needs structured reference documentation.
+
+Each skill contains:
+- `SKILL.md` — Overview and table of contents (follows [Agent Skills spec](https://agentskills.io/specification))
+- `rules/` — Individual rule files with full content
+
+## Available Skills
+
+| Skill | Description |
+| --- | --- |
+| [typescript-sdk](./skills/typescript-sdk/SKILL.md) | Use when creating, modifying, or testing AI Agents built with the Inkeep TypeScript SDK (@inkeep/agents-sdk). |
+
+---
+
+*Auto-generated from [inkeep/agents](https://github.com/inkeep/agents). Do not edit directly.*
