@@ -1,0 +1,115 @@
+---
+title: "Runtime Limits Configuration"
+description: "How to configure execution limits, timeouts, and constraints"
+topic-path: "typescript-sdk/configure-runtime-limits"
+---
+
+# Runtime Limits Configuration
+
+## How Runtime Configuration Works
+
+### Two Types of Limits
+
+**1. API-Configurable Limits** (set per agent/sub-agent via manage-api)
+
+* Configured in your agent definitions using `stopWhen`
+* Controls agent-specific behavior
+* See [Agent Settings - StopWhen](/typescript-sdk/agent-settings#configuring-stopwhen)
+
+**2. Runtime Environment Limits** (set via environment variables)
+
+* System-wide defaults and maximum allowed values
+* Controls infrastructure-level constraints
+* Documented in this guide
+
+### Configuration Hierarchy
+
+When an agent executes:
+
+1. Uses agent-specific `stopWhen` settings if configured
+2. Falls back to runtime environment defaults
+3. Cannot exceed runtime environment maximums
+
+### Understanding the Constants Architecture
+
+The runtime environment limits are defined as TypeScript constants in the `@inkeep/agents-core` package. These constants are organized into two categories based on their purpose:
+
+**1. Schema Validation Constants** (`packages/agents-core/src/constants/schema-validation/defaults.ts`)
+
+* Define **API-level validation limits** (min, max, default values)
+* Control what values users can configure via the manage-api
+* Used in Zod schemas to validate agent configuration requests
+* Examples: Transfer count limits, generation step limits, prompt character limits
+
+**2. Runtime Execution Constants - Shared** (`packages/agents-core/src/constants/execution-limits-shared/defaults.ts`)
+
+* Define **internal runtime behavior** limits
+* Control infrastructure-level timeouts, retries, and constraints
+* Shared across both manage-api and run-api services
+* Examples: MCP connection timeouts, conversation history token limits
+
+**3. Runtime Execution Constants - Run-API** (`packages/agents-run-api/src/constants/execution-limits/defaults.ts`)
+
+* Define **run-api specific runtime behavior** limits
+* Control execution engine timeouts, retries, and resource constraints
+* Only used by the run-api service (not shared with manage-api)
+* Examples: LLM generation timeouts, function tool sandbox limits, streaming buffer sizes
+
+Each constant includes detailed inline documentation explaining its purpose, behavior, and impact on the runtime. **The TypeScript constant files are the source of truth** for default values and available overrides—not `.env.example`.
+
+All constants can be overridden via environment variables prefixed with `AGENTS_`. For example:
+
+```bash
+# Override a schema validation constant
+AGENTS_AGENT_EXECUTION_TRANSFER_COUNT_DEFAULT=50
+
+# Override a runtime execution constant
+AGENTS_MCP_TOOL_CONNECTION_TIMEOUT_MS=5000
+```
+
+## Use Case: Long-Running Orchestration Agents
+
+For agents that orchestrate complex workflows (like coding agents that run for hours), you'll want to increase various limits and timeouts.
+
+### Recommended Configuration
+
+Add these to your `.env` file:
+
+```bash
+# Agent Execution - Allow more sub-agent transfers for complex orchestration
+AGENTS_EXECUTION_TRANSFER_COUNT_DEFAULT=50  # Default: 10
+AGENTS_EXECUTION_TRANSFER_COUNT_MAX=2000    # Default: 1000
+
+# Sub-Agent Turns - Allow more LLM generation steps per turn
+AGENTS_SUB_AGENT_TURN_GENERATION_STEPS_DEFAULT=30  # Default: 12
+AGENTS_SUB_AGENT_TURN_GENERATION_STEPS_MAX=2000    # Default: 1000
+
+# LLM Timeouts - Increase for longer-running operations
+AGENTS_LLM_GENERATION_FIRST_CALL_TIMEOUT_MS_STREAMING=600000   # 10min, Default: 4.5min
+AGENTS_LLM_GENERATION_SUBSEQUENT_CALL_TIMEOUT_MS=180000        # 3min, Default: 1.5min
+
+# Function Tools - Allow longer execution for complex operations
+AGENTS_FUNCTION_TOOL_EXECUTION_TIMEOUT_MS_DEFAULT=120000  # 2min, Default: 30sec
+
+# MCP Tools - Increase timeout for external tool operations
+AGENTS_MCP_TOOL_REQUEST_TIMEOUT_MS_DEFAULT=180000  # 3min, Default: 1min
+
+# Session Management - Keep tool results cached longer
+AGENTS_SESSION_TOOL_RESULT_CACHE_TIMEOUT_MS=1800000  # 30min, Default: 5min
+
+# Streaming - Allow streams to run longer
+AGENTS_STREAM_MAX_LIFETIME_MS=1800000  # 30min, Default: 10min
+```
+
+<Note>
+  `AGENTS_EXECUTION_TRANSFER_COUNT_DEFAULT` sets the default number of transfers allowed between sub-agents in a turn when no agent-specific limit is configured. `AGENTS_EXECUTION_TRANSFER_COUNT_MAX` sets the maximum number of transfers that can be configured via the manage-api for any agent.
+
+  The same pattern applies to `AGENTS_SUB_AGENT_TURN_GENERATION_STEPS_DEFAULT` and `AGENTS_SUB_AGENT_TURN_GENERATION_STEPS_MAX`.
+</Note>
+
+### Why These Settings?
+
+* **Transfer Count**: Coding orchestration often involves many handoffs between specialist agents (planning → implementation → testing → refinement)
+* **Generation Steps**: Each coding operation may require multiple tool calls (read files, analyze, write code, run tests)
+* **Timeouts**: Code generation and analysis can take time, especially for large files or complex refactoring
+* **Cache Duration**: Keeps tool results available throughout long sessions for artifact processing
