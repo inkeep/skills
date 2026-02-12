@@ -31,7 +31,7 @@ Read individual rule files for detailed explanations and code examples on partic
 | [CLI inkeep dev Command](./rules/cli-dev-command.md) | typescript-sdk/cli-reference | Start the Inkeep dashboard server for visual agents orchestration |
 | [CLI Environment Variables](./rules/cli-environment-variables.md) | typescript-sdk/cli-reference | Environment variables respected by the CLI and SDK |
 | [CLI inkeep init Command](./rules/cli-init-command.md) | typescript-sdk/cli-reference | Initialize a new Inkeep configuration file in your project |
-| [CLI inkeep list-agents Command](./rules/cli-list-agents-command.md) | typescript-sdk/cli-reference | List all available agents for a specific project |
+| [CLI inkeep list-agent Command](./rules/cli-list-agents-command.md) | typescript-sdk/cli-reference | List all available agents for a specific project |
 | [CLI inkeep profile Command](./rules/cli-profile-command.md) | typescript-sdk/cli-reference | Manage named CLI profiles for multiple remotes, credentials, and environments |
 | [CLI inkeep pull Command](./rules/cli-pull-command.md) | typescript-sdk/cli-reference | Pull project configuration from server and update local TypeScript files |
 | [CLI inkeep push Command](./rules/cli-push-command.md) | typescript-sdk/cli-reference | Push agent configurations to your server |
