@@ -76,7 +76,7 @@ When a user asks "Show me my tasks", the agent will respond with:
 
 ## Frontend Integration
 
-Create a React component matching your data component name:
+Create a React component that receives the props defined by your data component schema:
 
 ```tsx
 const TaskList = ({ tasks, totalCount, completedCount }) => (
@@ -91,14 +91,16 @@ const TaskList = ({ tasks, totalCount, completedCount }) => (
 );
 ```
 
-Register it with the Inkeep chat component:
+Register the component with the chat widget.
 
 ```tsx
+import { TaskList } from './ui/TaskList';
+
 <InkeepSidebarChat
   aiChatSettings={{
     agentUrl: "your-agent-url",
     components: {
-      TaskList, // Component name must match data component name
+      "TaskList": TaskList, // Key = component name; value = your component
     },
   }}
 />
