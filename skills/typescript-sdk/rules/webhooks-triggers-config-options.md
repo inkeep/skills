@@ -1,7 +1,7 @@
 ---
 title: "Trigger Configuration Options"
 description: "Configuration options for triggers including authentication, schemas, and transforms"
-topic-path: "typescript-sdk/triggers"
+topic-path: "typescript-sdk/triggers/webhooks"
 ---
 
 # Trigger Configuration Options

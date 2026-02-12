@@ -14,7 +14,7 @@ metadata:
 
 The TypeScript SDK provides a declarative way to define agents, sub-agents, tools, and their relationships. 
 
-## Rules (45)
+## Rules (47)
 
 Read individual rule files for detailed explanations and code examples on particular tasks or topics:
 
@@ -61,8 +61,10 @@ Read individual rule files for detailed explanations and code examples on partic
 | [Registering MCP Servers as Tools](./rules/mcp-tools-registration.md) | typescript-sdk/tools/mcp-tools | How to register and configure MCP tools for your agents |
 | [Tool Approvals Configuration](./rules/tool-approvals-config.md) | typescript-sdk/tools/tool-approvals | How to configure tools to require user approval before execution |
 | [Responding to Tool Approval Requests](./rules/tool-approvals-response.md) | typescript-sdk/tools/tool-approvals | How to approve or deny tool execution requests |
-| [Trigger Configuration Options](./rules/triggers-config-options.md) | typescript-sdk/triggers | Configuration options for triggers including authentication, schemas, and transforms |
-| [Triggers Overview](./rules/triggers-overview.md) | typescript-sdk/triggers | Creating webhook endpoints to invoke agents from external services |
+| [Trigger Configuration Options](./rules/overview-triggers-config-options.md) | typescript-sdk/triggers/overview | Configuration options for triggers including authentication, schemas, and transforms |
+| [Triggers Overview](./rules/overview-triggers-overview.md) | typescript-sdk/triggers/overview | Creating webhook endpoints to invoke agents from external services |
+| [Trigger Configuration Options](./rules/webhooks-triggers-config-options.md) | typescript-sdk/triggers/webhooks | Configuration options for triggers including authentication, schemas, and transforms |
+| [Triggers Overview](./rules/webhooks-triggers-overview.md) | typescript-sdk/triggers/webhooks | Creating webhook endpoints to invoke agents from external services |
 | [Configuration Priority Hierarchy](./rules/config-hierarchy.md) | typescript-sdk/workspace-configuration | How CLI flags, env vars, and config file values are resolved |
 | [Workspace Configuration File](./rules/workspace-config-overview.md) | typescript-sdk/workspace-configuration | Structure and options for inkeep.config.ts |
 

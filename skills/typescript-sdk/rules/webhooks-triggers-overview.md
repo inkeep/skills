@@ -1,7 +1,7 @@
 ---
 title: "Triggers Overview"
 description: "Creating webhook endpoints to invoke agents from external services"
-topic-path: "typescript-sdk/triggers"
+topic-path: "typescript-sdk/triggers/webhooks"
 ---
 
 # Triggers Overview
