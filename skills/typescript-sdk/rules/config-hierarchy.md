@@ -28,7 +28,7 @@ Command-line flags override all other settings:
 
 ```bash
 # Override API URL
-inkeep push --agents-manage-api-url https://api.production.com
+inkeep push --agents-api-url https://api.production.com
 
 # Override config file location
 inkeep pull --config /path/to/custom.config.ts
@@ -41,8 +41,7 @@ Environment variables override config file values:
 ```bash
 # Set via environment
 export INKEEP_TENANT_ID=staging-tenant
-export INKEEP_AGENTS_MANAGE_API_URL=https://api.staging.com
-export INKEEP_AGENTS_RUN_API_URL=https://run.staging.com
+export INKEEP_AGENTS_API_URL=https://api.staging.com
 
 # Now CLI commands use these values
 inkeep push
@@ -50,8 +49,7 @@ inkeep push
 
 **Supported Environment Variables:**
 
-| Variable                       | Config Equivalent    | Description        |
-| ------------------------------ | -------------------- | ------------------ |
-| `INKEEP_TENANT_ID`             | `tenantId`           | Tenant identifier  |
-| `INKEEP_AGENTS_MANAGE_API_URL` | `agentsManageApiUrl` | Management API URL |
-| `INKEEP_AGENTS_RUN_API_URL`    | `agentsRunApiUrl`    | Runtime API URL    |
+| Variable                | Config Equivalent | Description       |
+| ----------------------- | ----------------- | ----------------- |
+| `INKEEP_TENANT_ID`      | `tenantId`        | Tenant identifier |
+| `INKEEP_AGENTS_API_URL` | `agentsApi.url`   | Agents API URL    |

@@ -21,8 +21,7 @@ inkeep push
 * `--env <environment>` - Load environment-specific credentials from `environments/<environment>.env.ts`
 * `--config <path>` - Override config file path (bypasses automatic config discovery)
 * `--tenant-id <id>` - Override tenant ID
-* `--agents-manage-api-url <url>` - Override the management API URL from config
-* `--agents-run-api-url <url>` - Override agents run API URL
+* `--agents-api-url <url>` - Override the agents API URL from config
 * `--json` - Generate project data as JSON file instead of pushing to server
 * `--profile <name>` - Use a specific CLI profile (overrides the active profile)
 * `--quiet` - Suppress interactive prompts and extra logs
@@ -67,9 +66,8 @@ inkeep push --json
 # Override tenant ID
 inkeep push --tenant-id my-tenant
 
-# Override API URLs
-inkeep push --agents-manage-api-url https://api.example.com
-inkeep push --agents-run-api-url https://run.example.com
+# Override API URL
+inkeep push --agents-api-url https://api.example.com
 
 # Use specific config file
 inkeep push --config ./custom-config/inkeep.config.ts

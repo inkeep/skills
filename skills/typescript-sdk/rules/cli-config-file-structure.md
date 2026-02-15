@@ -15,8 +15,9 @@ import { defineConfig } from "@inkeep/agents-cli/config";
 
 export default defineConfig({
   tenantId: "your-tenant-id",
-  agentsManageApiUrl: "http://localhost:3002",
-  agentsRunApiUrl: "http://localhost:3003",
+  agentsApi: {
+    url: "http://localhost:3002",
+  },
 });
 ```
 
@@ -28,9 +29,9 @@ The CLI resolves configuration values in the following order. Higher-priority so
 
 | Priority    | Source             | Example                                                                                |
 | ----------- | ------------------ | -------------------------------------------------------------------------------------- |
-| 1 (highest) | CLI flags          | `--tenant-id`, `--agents-manage-api-url`                                               |
+| 1 (highest) | CLI flags          | `--tenant-id`, `--agents-api-url`                                                      |
 | 2           | Active profile     | API URLs, API key, and tenant ID from `~/.inkeep/profiles.yaml` + keychain credentials |
-| 3           | `inkeep.config.ts` | `tenantId`, `agentsManageApiUrl`                                                       |
+| 3           | `inkeep.config.ts` | `tenantId`, `agentsApi.url`                                                            |
 | 4 (lowest)  | Built-in defaults  | Default API URLs                                                                       |
 
 When a profile is active, it overrides `inkeep.config.ts` for these fields:
@@ -48,9 +49,9 @@ In CI environments, profiles are skipped entirely. The precedence becomes:
 
 | Priority    | Source                | Example                                                       |
 | ----------- | --------------------- | ------------------------------------------------------------- |
-| 1 (highest) | CLI flags             | `--tenant-id`, `--agents-manage-api-url`                      |
+| 1 (highest) | CLI flags             | `--tenant-id`, `--agents-api-url`                             |
 | 2           | Environment variables | `INKEEP_API_KEY`, `INKEEP_TENANT_ID`, `INKEEP_AGENTS_API_URL` |
-| 3           | `inkeep.config.ts`    | `tenantId`, `agentsManageApiUrl`                              |
+| 3           | `inkeep.config.ts`    | `tenantId`, `agentsApi.url`                                   |
 | 4 (lowest)  | Built-in defaults     | Default API URLs                                              |
 
 <Tip>

@@ -20,17 +20,16 @@ profiles:
     environment: production
   local:
     remote:
-      manageApi: http://localhost:3002
+      api: http://localhost:3002
       manageUi: http://localhost:3000
-      runApi: http://localhost:3003
-    credential: inkeep-local
+    credential: none
     environment: development
 ```
 
 **Subcommands:**
 
 * `inkeep profile list` — Show all profiles and the active one.
-* `inkeep profile add <name>` — Interactive creation for cloud or custom URLs; writes to `profiles.yaml`.
+* `inkeep profile add <name>` — Interactive profile creation. Choose between Inkeep Cloud, Local (localhost defaults, no auth required), or Custom (self-hosted/staging URLs).
 * `inkeep profile use <name>` — Switch the active profile.
 * `inkeep profile current` — Show the active profile details and credential key.
 * `inkeep profile remove <name>` — Delete a profile (cannot remove the active one).

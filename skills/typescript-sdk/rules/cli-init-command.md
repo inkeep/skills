@@ -18,7 +18,7 @@ inkeep init [path]
 
 **Options:**
 
-* `--local` - Initialize for local/self-hosted development (creates a local profile as default)
+* `--local` - Initialize for local development (creates a local profile with no authentication required)
 * `--no-interactive` - Skip interactive path selection
 * `--config <path>` - Path to use as template for new configuration
 
@@ -31,12 +31,14 @@ By default, `inkeep init` runs the cloud onboarding wizard which:
 * Creates project directories with configuration files
 * Sets up the `cloud` profile as the default in `~/.inkeep/profiles.yaml`
 
-Use `--local` for self-hosted or local development:
+Use `--local` for local development:
 
-* Prompts for tenant ID and API URLs (defaults to `localhost:3002` and `localhost:3003`)
+* Prompts for tenant ID and API URL (defaults to `localhost:3002`); Manage UI defaults to `localhost:3000`
 * Creates `inkeep.config.ts` with your local configuration
 * Sets up a `local` profile as the default in `~/.inkeep/profiles.yaml`
 * No authentication required
+
+For self-hosted deployments that require authentication, use `inkeep profile add` and select **Custom**.
 
 **Examples:**
 
@@ -44,7 +46,7 @@ Use `--local` for self-hosted or local development:
 # Cloud initialization (default) - opens browser for auth
 inkeep init
 
-# Local/self-hosted initialization - no auth required
+# Local initialization - no auth required
 inkeep init --local
 
 # Initialize in specific directory

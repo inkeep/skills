@@ -15,14 +15,10 @@ import { defineConfig } from "@inkeep/agents-cli/config";
 import "dotenv/config";
 
 export default defineConfig({
-  tenantId: "my-company",
-  agentsManageApi: {
-    url: "http://localhost:3002",
-    apiKey: process.env.MANAGE_API_KEY, // Optional
-  },
-  agentsRunApi: {
-    url: "http://localhost:3003",
-    apiKey: process.env.RUN_API_KEY, // Optional
+  tenantId: 'my-company',
+  agentsApi: {
+    url: 'http://localhost:3002',
+    apiKey: process.env.API_KEY, // Optional
   },
   outputDirectory: "./output",
 });
