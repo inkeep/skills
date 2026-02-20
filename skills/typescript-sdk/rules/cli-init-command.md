@@ -24,10 +24,10 @@ inkeep init [path]
 
 **Cloud vs Local Initialization:**
 
-By default, `inkeep init` runs the cloud onboarding wizard which:
+By default, `inkeep init` runs the remote instance onboarding wizard which:
 
 * Opens browser-based authentication
-* Fetches your organizations and projects from Inkeep Cloud
+* Fetches your organizations and projects from remote instance
 * Creates project directories with configuration files
 * Sets up the `cloud` profile as the default in `~/.inkeep/profiles.yaml`
 

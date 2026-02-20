@@ -55,11 +55,11 @@ inkeep profile remove staging
 
 * `inkeep login --profile <name>` stores credentials under the profile’s credential key.
 * Commands that talk to the APIs (`push`, `pull`, `status`, `login`, `logout`) honor `--profile <name>`; if omitted, the active profile is used.
-* Each profile bundles remote URLs, an environment name, and a credential reference so you can move between cloud and self-hosted deployments without editing config files.
+* Each profile bundles remote URLs, an environment name, and a credential reference so you can move between remote instances without editing config files.
 
 #### Using profiles with authenticated deployments
 
-If your deployment requires authentication (cloud or self-hosted), run `inkeep login` for each profile so its credential slot in `profiles.yaml` has a token in the system keychain:
+If your deployment requires authentication (remote instance or self-hosted), run `inkeep login` for each profile so its credential slot in `profiles.yaml` has a token in the system keychain:
 
 ```bash
 # Authenticate against your secured deployment
