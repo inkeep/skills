@@ -100,10 +100,10 @@ const supportSubAgent = subAgent({
 });
 ```
 
-| Parameter             | Type                | Required | Description                                                                                                           |
-| --------------------- | ------------------- | -------- | --------------------------------------------------------------------------------------------------------------------- |
-| `id`                  | string              | Yes      | Stable agent identifier used for consistency and persistence                                                          |
-| `name`                | string              | Yes      | Human-readable name for the external agent                                                                            |
-| `description`         | string              | Yes      | Brief description of the agent's purpose and capabilities                                                             |
-| `baseUrl`             | string              | Yes      | The A2A endpoint URL where the external agent can be reached                                                          |
-| `credentialReference` | CredentialReference | No       | Reference to dynamic credentials for authentication. See [Credentials](/typescript-sdk/tools/credentials) for details |
+| Parameter             | Type                | Required | Description                                                                                                              |
+| --------------------- | ------------------- | -------- | ------------------------------------------------------------------------------------------------------------------------ |
+| `id`                  | string              | Yes      | Stable agent identifier used for consistency and persistence                                                             |
+| `name`                | string              | Yes      | Human-readable name for the external agent                                                                               |
+| `description`         | string              | Yes      | Brief description of the agent's purpose and capabilities                                                                |
+| `baseUrl`             | string              | Yes      | The A2A endpoint URL where the external agent can be reached                                                             |
+| `credentialReference` | CredentialReference | No       | Reference to dynamic credentials for authentication. See [Credentials](/typescript-sdk/credentials/overview) for details |
