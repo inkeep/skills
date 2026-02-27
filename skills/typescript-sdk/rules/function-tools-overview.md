@@ -14,6 +14,7 @@ Function tools are perfect for:
 * **Data processing** - Transform, validate, or analyze data using JavaScript
 * **API integrations** - Make HTTP calls to services that don't have MCP servers
 * **Utility functions** - Create reusable helper functions for your agents
+* **Pipeline processing** - Chain tool outputs directly into subsequent tools without storing intermediate results
 
 ## Creating Function Tools
 
