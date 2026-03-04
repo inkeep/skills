@@ -45,3 +45,9 @@ See also: [Tool Approvals in Visual Builder](/visual-builder/tools/tool-approval
 When a tool requires approval, you’ll see a `tool-approval-request` in the stream.
 
 See [Chat API](/talk-to-your-agents/chat-api#tool-approval) for the tool event payloads (including approval requests, tool inputs, and tool outputs).
+
+### Denial reason propagation
+
+When a user denies a tool request with a `reason`, the agent receives the denial reason as a clean, human-readable string. This allows the agent to understand why the request was denied and adapt its behavior — for example, trying a different approach based on the user's feedback.
+
+This is especially useful for redirecting agents. If a user denies a request for "San Francisco weather" with the reason "I want Tokyo instead", the agent can immediately act on that feedback and fetch Tokyo weather without requiring a separate follow-up message.
