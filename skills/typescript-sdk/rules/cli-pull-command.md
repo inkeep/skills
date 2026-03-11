@@ -169,7 +169,7 @@ inkeep pull --all
 ```
 🔄 Batch Pull: Sequential processing with smart comparison
 
-  • Existing projects: Smart comparison + LLM merging + confirmation prompts
+  • Existing projects: Smart comparison + AST merging + confirmation prompts
   • New projects: Fresh generation with introspect mode
 
 Projects to pull:
