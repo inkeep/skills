@@ -17,6 +17,7 @@ The conversation history now includes:
 * **Chat messages**: User messages and agent responses
 * **Tool results**: Results from tool executions, providing context about what actions were performed
 * **Agent communications**: Messages exchanged between agents during transfers and delegations
+* **Images**: User-uploaded images and images returned by tools are persisted and served via secure media proxy URLs
 
 ## Memory Management
 
@@ -168,3 +169,7 @@ The tool results include both the input parameters and output results, formatted
   "results": [...]
 }
 ```
+
+## Images in Memory
+
+User-uploaded images — both inline data URIs and external URLs — are automatically persisted to blob storage as part of the conversation history. Images included in tool results are also persisted. When conversation history is retrieved, blob references are resolved to secure media proxy URLs, ensuring images remain accessible across sessions without exposing internal storage paths.
