@@ -156,44 +156,9 @@ providerOptions: {
   </Tab>
 </Tabs>
 
-**Vercel AI Gateway with model routing:**
+**Vercel AI Gateway:**
 
-The Gateway provider supports routing requests across multiple models with automatic fallback. If the primary model fails or is unavailable, the gateway tries the next model in the list.
-
-<Tabs>
-  <Tab title="TypeScript">
-    ```typescript
-    models: {
-      base: {
-        model: "gateway/openai/gpt-4.1",
-        providerOptions: {
-          gateway: {
-            models: ["openai/gpt-4.1", "anthropic/claude-sonnet-4-5", "google/gemini-3.1-flash-lite-preview"],  // Try in order
-          }
-        }
-      }
-    }
-    ```
-  </Tab>
-
-  <Tab title="JSON">
-    ```json
-    {
-      "gateway": {
-        "models": ["openai/gpt-4.1", "anthropic/claude-sonnet-4-5", "google/gemini-3.1-flash-lite-preview"]
-      }
-    }
-    ```
-  </Tab>
-</Tabs>
-
-<Note>
-  All models in the `models` array must be valid [Vercel AI Gateway model IDs](https://ai-sdk.dev/providers/ai-sdk-providers/ai-gateway). The gateway falls through to the next model on failure — if all models fail, the request errors. Set `AI_GATEWAY_API_KEY` in your environment for authentication.
-</Note>
-
-<Note>
-  When `AI_GATEWAY_API_KEY` is set, Anthropic, OpenAI, and Google models are automatically routed through the gateway for per-request cost tracking. No configuration changes are needed — your existing model strings work as-is.
-</Note>
+When `AI_GATEWAY_API_KEY` is set, Anthropic, OpenAI, and Google models are automatically routed through [Vercel AI Gateway](https://ai-sdk.dev/providers/ai-sdk-providers/ai-gateway) for per-request cost tracking. No configuration changes are needed — your existing model strings work as-is. See [AI Gateway](#ai-gateway) below for fallback models, allowed providers, and advanced gateway configuration.
 
 **Azure OpenAI:**
 
