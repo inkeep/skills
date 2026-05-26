@@ -59,3 +59,7 @@ const mathSupervisor = subAgent({
   canDelegateTo: () => [myAgent.with({ headers: { "authorization": "my-api-key" } })],
 });
 ```
+
+## Requiring a transfer
+
+By default a sub-agent that declares `canTransferTo` *may* transfer. To require that a sub-agent hands off on every turn, see the [Output Contract](/typescript-sdk/structured-outputs/output-contract).
