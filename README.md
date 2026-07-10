@@ -15,6 +15,7 @@ Each skill contains:
 | Skill | Description |
 | --- | --- |
 | [typescript-sdk](./skills/typescript-sdk/SKILL.md) | Use when creating, modifying, or testing AI Agents built with the Inkeep TypeScript SDK (@inkeep/agents-sdk). |
+| [pr-screenshots](./skills/pr-screenshots/SKILL.md) | Capture, annotate, and include screenshots in pull requests for UI changes. |
 
 ---
 
